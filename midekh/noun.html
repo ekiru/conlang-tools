@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Midêkʰ — Noun inflections</title>
+    <script lang="text/javascript" src="paradigms.js"></script>
+</head>
+
+<body>
+    <h1>Inflect a noun!</h1>
+
+    <div id="inflect-noun">
+        <p>
+            <label for="noun-stem">Noun stem:</label>
+            <input type="text" id="noun-stem" />
+            <span id="noun-stem-errors"></span>
+        </p>
+        <p>
+            <label for="noun-gender">Gender:</label>
+            <select id="noun-gender">
+                <option selected value="f">feminine</option>
+                <option value="n">neuter</option>
+                <option value="m">masculine</option>
+            </select>
+            <span id="noun-gender-errors"></span>
+        </p>
+        <p>
+            <button id="inflect-noun-button">Inflect!</button>
+        </p>
+    </div>
+
+    <table id="paradigm">
+        <caption>Inflection for <span class="display-stem">...</span></caption>
+
+        <tr>
+            <th>Case</th>
+            <th>singular form</th>
+            <th>plural form</th>
+        </tr>
+        <tr id="nominative-case">
+            <td>nominative</td>
+            <td class="singular"></td>
+            <td class="plural"></td>
+        </tr>
+        <tr id="accusative-case">
+            <td>accusative</td>
+            <td class="singular"></td>
+            <td class="plural"></td>
+        </tr>
+        <tr id="dative-case">
+            <td>dative</td>
+            <td class="singular"></td>
+            <td class="plural"></td>
+        </tr>
+
+        <tr id="prepositional-case">
+            <td>prepositional</td>
+            <td class="singular"></td>
+            <td class="plural"></td>
+        </tr>
+
+        <tr id="vocative-case">
+            <td>vocative</td>
+            <td class="singular"></td>
+            <td class="plural"></td>
+        </tr>
+
+
+    </table>
+
+    <script>
+        const Midekh = window.LANG.Midekh;
+
+        const cases = [
+            "nominative", "accusative", "vocative", "dative", "prepositional",
+        ];
+        const numbers = ["singular", "plural"];
+
+        function isMidekhGender(g) {
+            return g === "f" || g === "m" || g === "n";
+        }
+
+        function isVowel(c) {
+            switch (c) {
+                case 'i': case 'í': case 'ī': case 'î':
+                    return true;
+                case 'e': case 'é': case 'ē': case 'ê':
+                    return true;
+                case 'o': case 'ó': case 'ō': case 'ô':
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        function populateParadigm(stem, gender) {
+            const stemChars = Array.from(stem + "");
+            const endsInVowel = isVowel(stemChars[stemChars.length - 1]);
+            const endsIn = endsInVowel ? "vowel" : "consonant";
+
+            for (const caseName of cases) {
+                const caseRow = document.getElementById(`${caseName}-case`);
+                const caseMarker = Midekh.nouns.case[gender][caseName];
+                for (const number of numbers) {
+                    const cell = caseRow.querySelector(`td.${number}`);
+                    const numberMarker = Midekh.nouns.number[number][endsIn];
+                    cell.textContent = caseMarker + stem + numberMarker;
+                }
+            }
+        }
+
+        const button = document.getElementById("inflect-noun-button");
+
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const stem = document.getElementById("noun-stem").value;
+            const gender = document.getElementById("noun-gender").value;
+
+            clearErrors();
+            if (!isMidekhGender(gender)) {
+                const errorElem = document.getElementById("noun-gender-errors");
+                errorElem.textContent = `unrecognized gender ${gender}`;
+                return;
+            }
+
+            populateParadigm(stem, gender);
+        });
+
+        function clearErrors() {
+            const fields = ["noun-gender", "noun-stem"];
+            for (const field of fields) {
+                const errorElem = document.getElementById(`${field}-errors`);
+                errorElem.textContent = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

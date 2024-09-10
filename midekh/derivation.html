@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Midêkʰ — Derivations from a root</title>
+    <script lang="text/javascript" src="paradigms.js"></script>
+
+    <style>
+        table caption {
+            font-weight: bold;
+        }
+
+        table tr td {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        table.noun tr td:first-child,
+        table.verb tr td:not(:first-child) {
+            min-width: 10em;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Root derivations</h1>
+
+    <div id="derive-root">
+        <p>
+            <label for="root-consonant-1">Consonant 1:</label>
+            <select id="root-consonant-1">
+                <option selected value="m">m</option>
+                <option value="n">n</option>
+                <option value="ŋ">ŋ</option>
+
+                <option value="p">p</option>
+                <option value="t">t</option>
+                <option value="kʲ">kʲ</option>
+                <option value="k">k</option>
+                <option value="kʷ">kʷ</option>
+
+                <option value="b">b</option>
+                <option value="d">d</option>
+                <option value="gʲ">gʲ</option>
+                <option value="g">g</option>
+                <option value="gʷ">gʷ</option>
+
+                <option value="pʰ">pʰ</option>
+                <option value="tʰ">tʰ</option>
+                <option value="kʲʰ">kʲʰ</option>
+                <option value="kʰ">kʰ</option>
+                <option value="kʷʰ">kʷʰ</option>
+
+                <option value="f">f</option>
+                <option value="s">s</option>
+                <option value="h">h</option>
+
+                <option value="r">r</option>
+                <option value="l">l</option>
+            </select>
+            <span id="root-consonant-1-errors"></span>
+        </p>
+
+        <p>
+            <label for="root-consonant-2">Consonant 2:</label>
+            <select id="root-consonant-2">
+                <option selected value="m">m</option>
+                <option value="n">n</option>
+                <option value="ŋ">ŋ</option>
+
+                <option value="p">p</option>
+                <option value="t">t</option>
+                <option value="kʲ">kʲ</option>
+                <option value="k">k</option>
+                <option value="kʷ">kʷ</option>
+
+                <option value="b">b</option>
+                <option value="d">d</option>
+                <option value="gʲ">gʲ</option>
+                <option value="g">g</option>
+                <option value="gʷ">gʷ</option>
+
+                <option value="pʰ">pʰ</option>
+                <option value="tʰ">tʰ</option>
+                <option value="kʲʰ">kʲʰ</option>
+                <option value="kʰ">kʰ</option>
+                <option value="kʷʰ">kʷʰ</option>
+
+                <option value="f">f</option>
+                <option value="s">s</option>
+                <option value="h">h</option>
+
+                <option value="r">r</option>
+                <option value="l">l</option>
+            </select>
+            <span id="root-consonant-2-errors"></span>
+        </p>
+
+        <p>
+            <label for="root-consonant-3">Consonant 3:</label>
+            <select id="root-consonant-3">
+                <option selected value="m">m</option>
+                <option value="n">n</option>
+                <option value="ŋ">ŋ</option>
+
+                <option value="p">p</option>
+                <option value="t">t</option>
+                <option value="kʲ">kʲ</option>
+                <option value="k">k</option>
+                <option value="kʷ">kʷ</option>
+
+                <option value="b">b</option>
+                <option value="d">d</option>
+                <option value="gʲ">gʲ</option>
+                <option value="g">g</option>
+                <option value="gʷ">gʷ</option>
+
+                <option value="pʰ">pʰ</option>
+                <option value="tʰ">tʰ</option>
+                <option value="kʲʰ">kʲʰ</option>
+                <option value="kʰ">kʰ</option>
+                <option value="kʷʰ">kʷʰ</option>
+
+                <option value="f">f</option>
+                <option value="s">s</option>
+                <option value="h">h</option>
+
+                <option value="r">r</option>
+                <option value="l">l</option>
+            </select>
+            <span id="root-consonant-3-errors"></span>
+        </p>
+
+        <p>
+            <button id="derive-root-button">Derive!</button>
+        </p>
+    </div>
+
+    <section id="derivations">
+        <table class="noun">
+            <caption>Noun derivations</caption>
+            <tr>
+                <th>Stem</th>
+                <th>Category</th>
+                <th>Gender</th>
+            </tr>
+            <tr>
+                <td id="noun-abstraction"></td>
+                <td>abstraction</td>
+                <td>fem.</td>
+            </tr>
+            <tr>
+                <td id="noun-prototype"></td>
+                <td>prototype</td>
+                <td>fem. (if proper noun); neut. (if mindless animal); masc. otherwise</td>
+            </tr>
+
+            <tr>
+                <td id="noun-place"></td>
+                <td>place</td>
+                <td>neut.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-instrument"></td>
+                <td>instrument</td>
+                <td>neut.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-emphasis"></td>
+                <td>emphasis</td>
+                <td>masc. (if only one, or repeated action); fem. (intense action)</td>
+            </tr>
+
+            <tr>
+                <td id="noun-personal"></td>
+                <td>personal</td>
+                <td>according to referent's gender; usually masc. if unknown</td>
+            </tr>
+
+            <tr>
+                <td id="noun-diminutive"></td>
+                <td>diminutive</td>
+                <td>fem.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-derogative"></td>
+                <td>derogative</td>
+                <td>masc.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-common1"></td>
+                <td>common</td>
+                <td>masc.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-common2"></td>
+                <td>common</td>
+                <td>neut.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-common3"></td>
+                <td>common</td>
+                <td>masc.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-common4"></td>
+                <td>common</td>
+                <td>fem.</td>
+            </tr>
+
+            <tr>
+                <td id="noun-common5"></td>
+                <td>common</td>
+                <td>masc.</td>
+            </tr>
+        </table>
+
+        <table class="verb">
+            <caption>Verb derivations</caption>
+            <tr>
+                <th>Form</th>
+                <th>Non-past stem</th>
+                <th>Past stem</th>
+                <th>Verbal noun</th>
+                <th>Active part.</th>
+                <th>Passive part.</th>
+            </tr>
+
+            <tr id="1st-form">
+                <td>1st</td>
+                <td class="nonpast"></td>
+                <td class="past"></td>
+                <td class="verbal"></td>
+                <td class="active"></td>
+                <td class="passive"></td>
+            </tr>
+
+            <tr id="2nd-form">
+                <td>2nd</td>
+                <td class="nonpast"></td>
+                <td class="past"></td>
+                <td class="verbal"></td>
+                <td class="active"></td>
+                <td class="passive"></td>
+            </tr>
+
+            <tr id="3rd-form">
+                <td>3rd</td>
+                <td class="nonpast"></td>
+                <td class="past"></td>
+                <td class="verbal"></td>
+                <td class="active"></td>
+                <td class="passive"></td>
+            </tr>
+
+            <tr id="4th-form">
+                <td>4th</td>
+                <td class="nonpast"></td>
+                <td class="past"></td>
+                <td class="verbal"></td>
+                <td class="active"></td>
+                <td class="passive"></td>
+            </tr>
+
+            <tr id="5th-form">
+                <td>5th</td>
+                <td class="nonpast"></td>
+                <td class="past"></td>
+                <td class="verbal"></td>
+                <td class="active"></td>
+                <td class="passive"></td>
+            </tr>
+
+            <tr id="6th-form">
+                <td>6th</td>
+                <td class="nonpast"></td>
+                <td class="past"></td>
+                <td class="verbal"></td>
+                <td class="active"></td>
+                <td class="passive"></td>
+            </tr>
+        </table>
+    </section>
+
+    <script>
+        const Midekh = window.LANG.Midekh;
+
+        document.getElementById("derive-root-button").addEventListener("click", function (event) {
+            event.preventDefault();
+            const consonants = [1, 2, 3].map(function (i) {
+                return document.getElementById(`root-consonant-${i}`).value;
+            });
+
+            populateDerivations(consonants);
+        });
+
+        function populateDerivations(consonants) {
+            for (const nounType in Midekh.derivation.patterns.noun) {
+                if (!Object.hasOwn(Midekh.derivation.patterns.noun, nounType)) {
+                    continue;
+                }
+                const elem = document.getElementById(`noun-${nounType}`);
+                const pattern = Midekh.derivation.patterns.noun[nounType].pattern;
+                if (!elem) {
+                    console.error("unexpected noun type", nounType, pattern);
+                    continue;
+                }
+                elem.textContent = applyPattern(pattern, consonants);
+            }
+
+            for (const form in Midekh.derivation.patterns.verb) {
+                if (!Object.hasOwn(Midekh.derivation.patterns.verb, form)) {
+                    continue;
+                }
+                const row = document.getElementById(`${form}-form`);
+                const patterns = Midekh.derivation.patterns.verb[form];
+                if (!row) {
+                    console.error("unexpected verb form", form, patterns);
+                    continue;
+                }
+
+                for (const [name, pattern] of Object.entries(patterns)) {
+                    const elem = row.querySelector(`.${name}`);
+                    if (!elem) {
+                        console.error("missing verbal form cell", form, name, pattern);
+                        continue;
+                    }
+                    elem.textContent = applyPattern(pattern, consonants);
+                }
+            }
+        }
+
+        function applyPattern(pattern, consonants) {
+            const [c1, c2, c3] = consonants;
+            const [p0, p12, p23, p4] = pattern;
+            return [p0, c1, p12, c2, p23, c3, p4].join("");
+        }
+    </script>
+</body>
+
+</html>

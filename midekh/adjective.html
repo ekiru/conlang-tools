@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Midêkʰ — Adjective inflections</title>
+    <script lang="text/javascript" src="paradigms.js"></script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+
+        table colgroup {
+            border-left: 1px solid #333333;
+            border-right: 1px solid #333333;
+        }
+
+        table th,
+        table td {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        table th:nth-child(2n+1):not(:first-child),
+        table td:nth-child(2n+1):not(:first-child) {
+            padding-left: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Inflect a adjective!</h1>
+
+    <div id="inflect-adjective">
+        <p>
+            <label for="adjective-stem">Adjective stem:</label>
+            <input type="text" id="adjective-stem" />
+            <span id="adjective-stem-errors"></span>
+        </p>
+        <p>
+            <button id="inflect-adjective-button">Inflect!</button>
+        </p>
+    </div>
+
+    <table id="paradigm">
+        <caption>Inflection for <span class="display-stem">...</span></caption>
+
+        <colgroup span="1"></colgroup>
+        <colgroup span="2"></colgroup>
+        <colgroup span="2"></colgroup>
+        <colgroup span="2"></colgroup>
+
+        <tr>
+            <th>Case</th>
+            <th>masc. sing.</th>
+            <th>masc. plur.</th>
+            <th>fem. sing.</th>
+            <th>fem. plur.</th>
+            <th>neut. sing.</th>
+            <th>neut. plur.</th>
+        </tr>
+        <tr id="nominative-case">
+            <td>nominative</td>
+            <td class="masc singular"></td>
+            <td class="masc plural"></td>
+            <td class="fem singular"></td>
+            <td class="fem plural"></td>
+            <td class="neut singular"></td>
+            <td class="neut plural"></td>
+        </tr>
+        <tr id="accusative-case">
+            <td>accusative</td>
+            <td class="masc singular"></td>
+            <td class="masc plural"></td>
+            <td class="fem singular"></td>
+            <td class="fem plural"></td>
+            <td class="neut singular"></td>
+            <td class="neut plural"></td>
+        </tr>
+        <tr id="dative-case">
+            <td>dative</td>
+            <td class="masc singular"></td>
+            <td class="masc plural"></td>
+            <td class="fem singular"></td>
+            <td class="fem plural"></td>
+            <td class="neut singular"></td>
+            <td class="neut plural"></td>
+        </tr>
+
+        <tr id="prepositional-case">
+            <td>prepositional</td>
+            <td class="masc singular"></td>
+            <td class="masc plural"></td>
+            <td class="fem singular"></td>
+            <td class="fem plural"></td>
+            <td class="neut singular"></td>
+            <td class="neut plural"></td>
+        </tr>
+
+        <tr id="vocative-case">
+            <td>vocative</td>
+            <td class="masc singular"></td>
+            <td class="masc plural"></td>
+            <td class="fem singular"></td>
+            <td class="fem plural"></td>
+            <td class="neut singular"></td>
+            <td class="neut plural"></td>
+        </tr>
+
+
+    </table>
+
+    <script>
+        const Midekh = window.LANG.Midekh;
+
+        const cases = [
+            "nominative", "accusative", "vocative", "dative", "prepositional",
+        ];
+        const numbers = ["singular", "plural"];
+        const genders = new Map([["masc", "m"], ["fem", "f"], ["neut", "n"]]);
+
+        function isMidekhGender(g) {
+            return g === "f" || g === "m" || g === "n";
+        }
+
+        function populateParadigm(stem) {
+            const stemChars = Array.from(stem + "");
+            const endsInVowel = Midekh.isVowel(stemChars[stemChars.length - 1]);
+            const endsIn = endsInVowel ? "vowel" : "consonant";
+
+            for (const elem of document.querySelectorAll(".display-stem")) {
+                elem.textContent = stem;
+            }
+
+            for (const caseName of cases) {
+                const caseRow = document.getElementById(`${caseName}-case`);
+                for (const [gender, g] of genders) {
+                    const caseMarker = Midekh.adjectives.case[g][caseName];
+                    for (const number of numbers) {
+                        const cell = caseRow.querySelector(`td.${number}.${gender}`);
+                        const numberMarker = Midekh.adjectives.number[number][endsIn];
+                        cell.textContent = caseMarker + stem + numberMarker;
+                    }
+                }
+            }
+        }
+
+        const button = document.getElementById("inflect-adjective-button");
+
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const stem = document.getElementById("adjective-stem").value;
+
+            clearErrors();
+
+            populateParadigm(stem);
+        });
+
+        function clearErrors() {
+            const fields = ["adjective-stem"];
+            for (const field of fields) {
+                const errorElem = document.getElementById(`${field}-errors`);
+                errorElem.textContent = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -80,22 +80,9 @@
             return g === "f" || g === "m" || g === "n";
         }
 
-        function isVowel(c) {
-            switch (c) {
-                case 'i': case 'í': case 'ī': case 'î':
-                    return true;
-                case 'e': case 'é': case 'ē': case 'ê':
-                    return true;
-                case 'o': case 'ó': case 'ō': case 'ô':
-                    return true;
-                default:
-                    return false;
-            }
-        }
-
         function populateParadigm(stem, gender) {
             const stemChars = Array.from(stem + "");
-            const endsInVowel = isVowel(stemChars[stemChars.length - 1]);
+            const endsInVowel = Midekh.isVowel(stemChars[stemChars.length - 1]);
             const endsIn = endsInVowel ? "vowel" : "consonant";
 
             for (const caseName of cases) {

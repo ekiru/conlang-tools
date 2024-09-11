@@ -1,6 +1,19 @@
 {
     const Midekh = Object.create(null);
 
+    Midekh.isVowel = function (c) {
+        switch (c) {
+            case 'i': case 'í': case 'ī': case 'î':
+                return true;
+            case 'e': case 'é': case 'ē': case 'ê':
+                return true;
+            case 'o': case 'ó': case 'ō': case 'ô':
+                return true;
+            default:
+                return false;
+        }
+    }
+
     Midekh.derivation = Object.create(null);
     Midekh.derivation.patterns = Object.create(null);
 
@@ -104,6 +117,7 @@
         },
     };
 
+    Midekh.adjectives = Object.create(null);
     Midekh.nouns = Object.create(null);
     Midekh.nouns.case = {
         m: {
@@ -128,8 +142,25 @@
             prepositional: "pō",
         },
     };
+    Midekh.adjectives.case = {
+        m: {
+            nominative: "",
+            accusative: "de",
+            vocative: "to",
+            dative: "ti",
+            prepositional: "dē",
+        },
+        f: {
+            nominative: "gi",
+            accusative: "ke",
+            vocative: "ko",
+            dative: "go",
+            prepositional: "kī",
+        },
+        n: Midekh.nouns.case.n,
+    };
 
-    Midekh.nouns.number = {
+    Midekh.adjectives.number = Midekh.nouns.number = {
         singular: {
             vowel: "k",
             consonant: "",

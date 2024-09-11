@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Midêkʰ — Verb inflections</title>
+    <script lang="text/javascript" src="paradigms.js"></script>
+</head>
+
+<body>
+    <h1>Inflect a verb!</h1>
+
+    <div id="inflect-verb">
+        <p>
+            <label for="verb-stem">Verb stem:</label>
+            <input type="text" id="verb-stem" />
+            <span id="verb-stem-errors"></span>
+        </p>
+        <p>
+            <label for="verb-tense">Tense:</label>
+            <select id="verb-tense">
+                <option selected value="non-past">non-past</option>
+                <option value="past">past</option>
+            </select>
+            <span id="verb-tense-errors"></span>
+        </p>
+        <p>
+            <button id="inflect-verb-button">Inflect!</button>
+        </p>
+    </div>
+
+    <section id="paradigm">
+        <h2>Inflection for <span class="display-stem">...</span></h2>
+        <table id="indicative">
+            <caption>Indicative mood</caption>
+
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Person</th>
+                    <th>Singular</th>
+                    <th>Plural</th>
+                </tr>
+            </thead>
+
+            <tbody class="continuous">
+                <tr class="person-1">
+                    <td rowspan="3">continuous</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+
+            <tbody class="habitual">
+                <tr class="person-1">
+                    <td rowspan="3">habitual</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+
+            <tbody class="perfective">
+                <tr class="person-1">
+                    <td rowspan="3">perfective</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="optative">
+            <caption>Optative mood</caption>
+
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Person</th>
+                    <th>Singular</th>
+                    <th>Plural</th>
+                </tr>
+            </thead>
+
+            <tbody class="continuous">
+                <tr class="person-1">
+                    <td rowspan="3">continuous</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+
+            <tbody class="perfective">
+                <tr class="person-1">
+                    <td rowspan="3">perfective</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="subjunctive">
+            <caption>subjunctive mood</caption>
+
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Person</th>
+                    <th>Singular</th>
+                    <th>Plural</th>
+                </tr>
+            </thead>
+
+            <tbody class="continuous">
+                <tr class="person-1">
+                    <td rowspan="3">continuous</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+
+            <tbody class="perfective">
+                <tr class="person-1">
+                    <td rowspan="3">perfective</td>
+                    <td>1st</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-2">
+                    <td>2nd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+
+                <tr class="person-3">
+                    <td>3rd</td>
+                    <td class="singular"></td>
+                    <td class="plural"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        const Midekh = window.LANG.Midekh;
+
+        const moods = [
+            "indicative", "optative", "subjunctive",
+        ];
+        const aspects = [
+            "continuous", "habitual", "perfective",
+        ];
+        const numbers = ["singular", "plural"];
+        const persons = ["1", "2", "3"];
+
+        function populateParadigm(stem) {
+            for (const mood of moods) {
+                const moodTable = document.getElementById(mood);
+
+                for (const aspect of aspects) {
+                    if (aspect === "habitual" && mood !== "indicative") {
+                        continue;
+                    }
+                    const aspectRows = moodTable.querySelector(`.${aspect}`);
+                    for (const person of persons) {
+                        const personRow = aspectRows.querySelector(`.person-${person}`);
+
+                        for (const number of numbers) {
+                            const inflected = inflectVerb(stem, {
+                                aspect, mood, number, person,
+                            });
+                            const elem = personRow.querySelector(`.${number}`);
+                            elem.textContent = inflected;
+                        }
+                    }
+                }
+            }
+        }
+
+        function inflectVerb(stem, { aspect, mood, number, person }) {
+            const stemChars = Array.from(stem + "");
+            const endsInVowel = Midekh.isVowel(stemChars[stemChars.length - 1]);
+            const endsIn = endsInVowel ? "vowel" : "consonant";
+
+            const prefixes = [];
+            const suffixes = [];
+
+            let aspectMood;
+            if (aspect === "perfective" || mood === "indicative") {
+                aspectMood = Midekh.verbs.aspectMood[mood][aspect];
+            } else {
+                aspectMood = Midekh.verbs.aspectMood[mood].imperfective;
+            }
+            if (mood === "indicative" && aspect === "continuous") {
+                prefixes.push(aspectMood);
+            } else {
+                suffixes.push(aspectMood);
+            }
+
+            prefixes.push(Midekh.verbs.person[person]);
+            suffixes.push(Midekh.verbs.number[number][endsIn]);
+
+            prefixes.reverse();
+            return `${prefixes.join("")}${stem}${suffixes.join("")}`;
+        }
+
+        const button = document.getElementById("inflect-verb-button");
+
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const stem = document.getElementById("verb-stem").value;
+
+            clearErrors();
+
+            populateParadigm(stem);
+        });
+
+        function clearErrors() {
+            const fields = ["verb-stem"];
+            for (const field of fields) {
+                const errorElem = document.getElementById(`${field}-errors`);
+                errorElem.textContent = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

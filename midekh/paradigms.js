@@ -171,6 +171,41 @@
         },
     };
 
+    Midekh.verbs = Object.create(null);
+
+    Midekh.verbs.aspectMood = {
+        indicative: {
+            continuous: "bi",
+            habitual: "bi",
+            perfective: "",
+        },
+        optative: {
+            imperfective: "r",
+            perfective: "n",
+        },
+        subjunctive: {
+            imperfective: "l",
+            perfective: "m",
+        },
+    };
+
+    Midekh.verbs.number = {
+        singular: {
+            vowel: "g",
+            consonant: "",
+        },
+        plural: {
+            vowel: "hē",
+            consonant: "ē",
+        },
+    };
+
+    Midekh.verbs.person = {
+        1: "kʰo",
+        2: "tm",
+        3: "",
+    };
+
     window.LANG = {
         Midekh,
     };

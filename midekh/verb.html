@@ -253,10 +253,17 @@
             }
         }
 
+        function determineLastSound(word) {
+            const chars = Array.from(word);
+            if (Midekh.isVowel(chars[chars.length - 1])) {
+                return "vowel";
+            } else {
+                return "consonant";
+            }
+        }
+
         function inflectVerb(stem, { aspect, mood, number, person }) {
-            const stemChars = Array.from(stem + "");
-            const endsInVowel = Midekh.isVowel(stemChars[stemChars.length - 1]);
-            const endsIn = endsInVowel ? "vowel" : "consonant";
+            let endsIn = determineLastSound(stem);
 
             const prefixes = [];
             const suffixes = [];
@@ -269,8 +276,9 @@
             }
             if (mood === "indicative" && aspect === "continuous") {
                 prefixes.push(aspectMood);
-            } else {
+            } else if (aspectMood !== "") {
                 suffixes.push(aspectMood);
+                endsIn = determineLastSound(aspectMood);
             }
 
             prefixes.push(Midekh.verbs.person[person]);
